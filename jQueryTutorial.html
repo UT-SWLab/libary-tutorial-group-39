@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<!-- 
+    The jQuery syntax is tailor-made for selecting HTML elements and performing some action on the element(s).
+    Basic syntax is: $(selector).action()
+    
+    A $ sign to define/access jQuery
+    A (selector) to "query (or find)" HTML elements
+    A jQuery action() to be performed on the element(s)
+    
+    Examples:
+        $(this).hide() - hides the current element.
+        $("p").hide() - hides all <p> elements.
+        $(".test").hide() - hides all elements with class="test".
+        $("#test").hide() - hides the element with id="test".
+
+    The rest of this tutorial will walk you through jQuery. 
+-->
+
+<head>
+    <!-- To use the jQuery library, you can either download the library from jQuery.com or use a 
+        content delivery network (CDN). Here, we use Google's CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <!-- All jQuery methods should be located within the $(document).ready(function () { } function in order to prevent any jQuery 
+    code from running before the document is finished loading.  
+
+    To find an element by tag, use the tag. 
+        example: $("button")
+    
+    To find an element by id, use #id
+        example: $("#id")
+    
+    To find an element by class, use .class
+        example: $(".class")
+    -->
+    
+    <script>
+        $(document).ready(function () {
+            $("#hide").click(function () {
+                $("p").hide();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#show").click(function () {
+                $("p").show();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#animate").click(function () {
+                $(".box").animate({
+                    left: '400px',
+                    opacity: '0.30',
+                    height: '200px',
+                    width: '200px'
+                });
+
+                $("#animate").hide()
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#chain").click(function () {
+                $("#box").css("color", "red").slideUp(2000).slideDown(2000).fadeToggle("slow").fadeIn();
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#load").click(function () {
+                //when hosted on a website, you would use .load()
+                //      example: $("#data").load("baseball.txt");
+                //since this is a local file, we will just hardcode. 
+                $("#data").text("Baseball is a bat-and-ball game played between two opposing teams who take turns batting and fielding. The game proceeds when a player on the fielding team, called the pitcher, throws a ball which a player on the batting team tries to hit with a bat. The objective of the offensive team (batting team) is to hit the ball into the field of play, allowing its players to run the bases, having them advance counter-clockwise around four bases to score what are called runs. The objective of the defensive team (fielding team) is to prevent batters from becoming runners, and to prevent runners' advance around the bases.[2] A run is scored when a runner legally advances around the bases in order and touches home plate (the place where the player started as a batter). The team that scores the most runs by the end of the game is the winner.");
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#link").click(function () {
+                $("#ll").attr("href", "https://www.mlb.com");
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <h2>jQuery Tutorial</h2>
+    <p>Click the button to hide or show this text in the p tag.</p>
+    <p>More Text!</p>
+
+    <div class = "box" style="background:#40708b;height:100px;width:100px;position: relative;;"></div>
+
+    <button id= "hide">Hide Text</button>
+    <button id= "show">Show Text</button>
+    <button id= "animate">Animate the Box</button>
+
+
+    <p>There are many different actions you can do with an element. You can hide/show, 
+        fade, slide, animate, stop, callback, and chain multiple events together on the same element. Let's chain some events 
+        together on this second box. </p>
+
+    <div id = "box" style="background:#1d7745;height:100px;width:100px;position: relative;;"></div>
+
+    <button id = "chain">Chain Events</button>
+
+    <p>Another great part about jQuery is its simplification for using AJAX to communicate with web servers within a web page. 
+        AJAX stands for Asynchronous JavaScript and XML. Use the button below to load data from an external source! 
+    </p>
+    
+    <button id ="load">Load Data</button>
+
+    <div id="data"><p>No Data Yet</p></div>
+
+
+    <p>You can also use jQuery to set html elements to a certain tag, set value in form fields, or change attributes! 
+        Mouse over the link (or click on it) to see that the value of the href attribute has changed.
+    </p>
+    
+    <p><a href="https://www.nfl.com/" id = "ll">Sport</a></p>
+    
+    <button id = "link"> Change href attribute value</button>
+    
+</body>
+
+</html>
